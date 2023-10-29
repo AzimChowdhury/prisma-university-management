@@ -6,9 +6,15 @@ import { StudentSemesterPaymentController } from './studentSemesterPayment.contr
 const router = express.Router();
 
 router.get(
-    '/',
-    auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.FACULTY),
-    StudentSemesterPaymentController.getAllFromDB
+  '/',
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.FACULTY),
+  StudentSemesterPaymentController.getAllFromDB
+);
+
+router.post(
+  '/initiate-payment',
+  auth(ENUM_USER_ROLE.STUDENT),
+  StudentSemesterPaymentController.initiatePayment
 );
 
 export const studentSemesterPaymentRoutes = router;
