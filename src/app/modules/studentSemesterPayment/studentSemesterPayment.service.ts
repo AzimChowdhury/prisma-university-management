@@ -8,6 +8,10 @@ import {
   DefaultArgs,
   PrismaClientOptions,
 } from '@prisma/client/runtime/library';
+import axios from 'axios';
+import httpStatus from 'http-status';
+import config from '../../../config';
+import ApiError from '../../../errors/ApiError';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
@@ -18,10 +22,6 @@ import {
   studentSemesterPaymentSearchableFields,
 } from './studentSemesterPayment.constants';
 import { IStudentSemesterPaymentFilterRequest } from './studentSemesterPayment.interface';
-import ApiError from '../../../errors/ApiError';
-import httpStatus from 'http-status';
-import axios from 'axios';
-import config from '../../../config';
 
 const createSemesterPayment = async (
   prismaClient: Omit<
